@@ -8,21 +8,28 @@ public class UpperLimitedPositiveCounter extends Counter {
         this.max = max;
     }
 
+    public UpperLimitedPositiveCounter(int max){
+        super(0);
+        this.max = max;
+    }
+
     @Override
     public void inc() throws CounterException {
         if(0 < super.getValue() && super.getValue() < max){
             super.inc();
         }else{
-            throw new CounterException();
+            throw new CounterException("maximum");
         }
     }
 
     @Override
     public void add(int step) throws CounterException {
-        if(0 < super.getValue() && super.getValue() < max){
-            super.add(step);
+        if(super.getValue() + step < 0 || super.getValue() < 0){
+            throw new CounterException("minus");
+        }else if(super.getValue()+step > max || super.getValue() > max){
+            throw new CounterException("maximum");
         }else{
-            throw new CounterException();
+            super.add(step);
         }
     }
 

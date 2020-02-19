@@ -12,14 +12,10 @@ public class Main {
         }
         System.out.println(uc.getValue());
 
+        UpperLimitedPositiveCounter uc2 = new UpperLimitedPositiveCounter(15);
 
-        UpperLimitedPositiveCounter uc2 = new UpperLimitedPositiveCounter(10, 15);
+        uc2.add(15);
 
-        System.out.println(uc2.getValue());
-        for (int i = 0; i < 6; i++){
-            uc2.inc();
-        }
-        System.out.println(uc2.getValue());
 
     }
 }
