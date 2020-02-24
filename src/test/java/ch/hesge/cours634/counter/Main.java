@@ -3,6 +3,10 @@ package ch.hesge.cours634.counter;
 public class Main {
 
     public static void main(String[] args) throws CounterException {
+            testCounterLimited();
+    }
+
+    private static void testCounterLimited() throws CounterException{
 
         UpperLimitedPositiveCounter uc = new UpperLimitedPositiveCounter(10, 15);
 
@@ -15,7 +19,10 @@ public class Main {
         UpperLimitedPositiveCounter uc2 = new UpperLimitedPositiveCounter(15);
 
         uc2.add(15);
-
-
+        try{
+            uc2.inc();
+        }catch (CounterException ce){
+            System.out.println(ce);
+        }
     }
 }
